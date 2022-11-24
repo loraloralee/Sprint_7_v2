@@ -35,16 +35,30 @@ public class CourierLoginTest {
     @DisplayName("Courier without login")
     @Test
     public void courierWithoutLoginTest(){
-        ValidatableResponse responseWithoutLogin = courierClient.login(Credentials.сredentialsWithoutLogin(courier));
+        ValidatableResponse responseWithoutLogin = courierClient.login(Credentials.credentialsWithoutLogin(courier));
         int statusCode = responseWithoutLogin.extract().statusCode();
         Assert.assertEquals("Недостаточно данных для создания учетной записи",400,statusCode);
     }
-
-    @DisplayName("Courier with invalid login-password")
+    @DisplayName("Courier without Password")
     @Test
-    public void courierWithInvalidLoginPasswordTest(){
-        ValidatableResponse responseWithInvalidLoginPassword = courierClient.login(Credentials.credentialsWithInvalidLoginPassword(courier));
-        int statusCode = responseWithInvalidLoginPassword.extract().statusCode();
+    public void courierWithoutPasswordTest(){
+        ValidatableResponse responseWithoutPassword = courierClient.login(Credentials.credentialsWithoutPassword(courier));
+        int statusCode = responseWithoutPassword.extract().statusCode();
+        Assert.assertEquals("Недостаточно данных для создания учетной записи",400,statusCode);
+    }
+
+    @DisplayName("Courier with invalid login")
+    @Test
+    public void courierWithInvalidLoginTest(){
+        ValidatableResponse responseWithInvalidLogin = courierClient.login(Credentials.credentialsWithInvalidLogin(courier));
+        int statusCode = responseWithInvalidLogin.extract().statusCode();
+        Assert.assertEquals("Учетная запись не найдена",404,statusCode);
+    }
+    @DisplayName("Courier with invalid password")
+    @Test
+    public void courierWithInvalidPasswordTest(){
+        ValidatableResponse responseWithInvalidPassword = courierClient.login(Credentials.credentialsWithInvalidPassword(courier));
+        int statusCode = responseWithInvalidPassword.extract().statusCode();
         Assert.assertEquals("Учетная запись не найдена",404,statusCode);
     }
 }

@@ -13,7 +13,7 @@ public class CourierCreateTest {
     private Courier courier = new Courier();
     private int id;
     private Courier credentialsWithDoubleLogin_1;
-    private Courier credentialsWithSameLoginAndPassword;
+
 
 
     @Before
@@ -21,7 +21,6 @@ public class CourierCreateTest {
         courierClient = new CourierClient();
         courier = CourierGenerator.getDefault();
         credentialsWithDoubleLogin_1 = CourierGenerator.createWithDoubleLogin_1();
-        //credentialsWithSameLoginAndPassword=Credentials.createWithSameLoginAndPassword();
 
     }
 
@@ -44,7 +43,7 @@ public class CourierCreateTest {
     @DisplayName("Courier without login")
     @Test
     public void courierWithoutLoginTest() {
-        ValidatableResponse responseWithoutLogin = courierClient.login(Credentials.сredentialsWithoutLogin(courier));
+        ValidatableResponse responseWithoutLogin = courierClient.login(Credentials.credentialsWithoutLogin(courier));
         int statusCode = responseWithoutLogin.extract().statusCode();
         Assert.assertEquals("Недостаточно данных для создания учетной записи", 400, statusCode);
     }
@@ -57,15 +56,5 @@ public class CourierCreateTest {
         Assert.assertEquals("Этот логин уже используется", 409, statusCode);
     }
 
-   /* @DisplayName("Can't create two same couriers")
-    @Test
-    public void twoSameCourierTest() {
-        ValidatableResponse responseTwoSameCourier = courierClient.create(courier);
-        int statusCode = responseTwoSameCourier.extract().statusCode();
-        ValidatableResponse responseLogin = courierClient.login(Credentials.from(courier));
-        id = responseLogin.extract().path("id");
-        //boolean isCourierCreated = responseCreate.extract().path("ok");
-        Assert.assertEquals("Не может быть создан один и тот же курьер", 201, statusCode);
 
-    }*/
 }

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite tests="4" failures="0" name="orderPackage.OrderCreateTest" time="0.633" errors="0" skipped="0">
+<testsuite tests="4" failures="0" name="orderPackage.OrderCreateTest" time="0.892" errors="0" skipped="0">
   <properties>
     <property name="java.runtime.name" value="OpenJDK Runtime Environment"/>
     <property name="java.vm.version" value="11.0.15+9-LTS"/>
@@ -65,8 +65,8 @@
     <property name="sun.desktop" value="windows"/>
     <property name="sun.cpu.isalist" value="amd64"/>
   </properties>
-  <testcase classname="orderPackage.OrderCreateTest" name="orderСanBeCreatedWithDifferentColorsTest[0]" time="0.008"/>
-  <testcase classname="orderPackage.OrderCreateTest" name="orderСanBeCreatedWithDifferentColorsTest[1]" time="0.215"/>
-  <testcase classname="orderPackage.OrderCreateTest" name="orderСanBeCreatedWithDifferentColorsTest[2]" time="0.226"/>
-  <testcase classname="orderPackage.OrderCreateTest" name="orderСanBeCreatedWithDifferentColorsTest[3]" time="0.184"/>
+  <testcase classname="orderPackage.OrderCreateTest" name="orderСanBeCreatedWithDifferentColorsTest[0]" time="0.257"/>
+  <testcase classname="orderPackage.OrderCreateTest" name="orderСanBeCreatedWithDifferentColorsTest[1]" time="0.232"/>
+  <testcase classname="orderPackage.OrderCreateTest" name="orderСanBeCreatedWithDifferentColorsTest[2]" time="0.186"/>
+  <testcase classname="orderPackage.OrderCreateTest" name="orderСanBeCreatedWithDifferentColorsTest[3]" time="0.217"/>
 </testsuite>
