@@ -9,27 +9,30 @@ import org.junit.jupiter.api.DisplayName;
 
 
 public class CourierLoginTest {
-    private CourierClient courierClient = new CourierClient();
+    private CourierClient courierClient ;
     private Courier courier = new Courier();
-    private int id;
+     int id;
 
     @Before
     public void setUp() {
         courierClient = new CourierClient();
         courier = CourierGenerator.getDefault();
+
     }
     @After
     public void cleanUp(){
-        if(id!=0);
         courierClient.delete(id);
     }
     @DisplayName("Courier can be login")
     @Test
-    public void courierСanBeLoginTest() {
+    public void courierCanBeLoginTest() {
         ValidatableResponse responseCreate = courierClient.create(courier);
         ValidatableResponse responseLogin = courierClient.login(Credentials.from(courier));
         id = responseLogin.extract().path("id");
+        boolean isCourierCreated = responseCreate.extract().path("ok");
         Assert.assertTrue("Учетная запись не найдена",id!=0);
+        Assert.assertTrue(isCourierCreated);
+
     }
 
     @DisplayName("Courier without login")

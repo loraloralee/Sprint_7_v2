@@ -13,9 +13,7 @@ import org.junit.runners.Parameterized;
 public class OrderCreateTest {
 
     private Order order;
-    int track;
     private OrderClient orderClient;
-    private OrderGenerator orderGenerator=new OrderGenerator();
 
     public OrderCreateTest(Order order) {
         this.order = order;
@@ -38,7 +36,7 @@ public class OrderCreateTest {
 
     @DisplayName("Order can be created with different colors")
     @Test
-    public void orderСanBeCreatedWithDifferentColorsTest() {
+    public void orderCanBeCreatedWithDifferentColorsTest() {
         ValidatableResponse responseCreateOrder = orderClient.orderCreate(order);
         int track = responseCreateOrder.extract().path("track");
         int statusCode= responseCreateOrder.extract().statusCode();

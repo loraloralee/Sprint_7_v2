@@ -16,6 +16,7 @@ public class CourierCreateTest {
 
 
 
+
     @Before
     public void setUp() {
         courierClient = new CourierClient();
@@ -25,19 +26,21 @@ public class CourierCreateTest {
     }
 
     @After
+
     public void cleanUp() {
         courierClient.delete(id);
     }
 
     @Test
     @DisplayName("Check is courier can be created")
-    public void courierСanBeCreatedTest() {
+    public void courierCanBeCreatedTest() {
         ValidatableResponse responseCreate = courierClient.create(courier);
         ValidatableResponse responseLogin = courierClient.login(Credentials.from(courier));
         int statusCode = responseCreate.extract().statusCode();
         id = responseLogin.extract().path("id");
         boolean isCourierCreated = responseCreate.extract().path("ok");
         Assert.assertEquals("Курьер не создан", 201, statusCode);
+        Assert.assertTrue(isCourierCreated);
     }
 
     @DisplayName("Courier without login")
@@ -51,6 +54,7 @@ public class CourierCreateTest {
     @DisplayName("Courier with double login")
     @Test
     public void courierWithDoubleLoginTest() {
+
         ValidatableResponse responseWithDoubleLogin = courierClient.create(credentialsWithDoubleLogin_1);
         int statusCode = responseWithDoubleLogin.extract().statusCode();
         Assert.assertEquals("Этот логин уже используется", 409, statusCode);
